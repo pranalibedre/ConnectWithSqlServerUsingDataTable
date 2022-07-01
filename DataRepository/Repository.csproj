@@ -4,27 +4,25 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{04F8B3FC-E3DF-42A4-9A79-39B98434E79A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ConnectWithSqlServerUsingDataTable</RootNamespace>
-    <AssemblyName>ConnectWithSqlServerUsingDataTable</AssemblyName>
+    <ProjectGuid>{6D6706A4-DD21-4343-BD86-EEB753B6EC12}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataRepository</RootNamespace>
+    <AssemblyName>DataRepository</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -44,25 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="PersonAddressRepository.cs" />
+    <Compile Include="PersonRepository.cs" />
+    <Compile Include="StateRepository.cs" />
+    <Compile Include="GenderRepository.cs" />
+    <Compile Include="CountryRepository.cs" />
+    <Compile Include="DataRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataRepository\Repository.csproj">
-      <Project>{6d6706a4-dd21-4343-bd86-eeb753b6ec12}</Project>
-      <Name>Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{476a20e8-f197-4349-a8e5-45b0eb00a736}</Project>
       <Name>Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">
-      <Project>{e92e19b5-0550-43e6-83cb-8b248747c8ea}</Project>
+      <Project>{E92E19B5-0550-43E6-83CB-8B248747C8EA}</Project>
       <Name>Interfaces</Name>
     </ProjectReference>
   </ItemGroup>

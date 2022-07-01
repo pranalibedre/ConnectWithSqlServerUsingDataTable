@@ -1,23 +1,16 @@
-﻿using System;
+﻿using Entities;
+using Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data;
-using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConnectWithSqlServerUsingDataTable
+namespace Repository
 {
-    public class PersonAddress
+    public class PersonAddressRepository : IPersonAddressRepository
     {
-        public int AddressId { get; set; }
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
-        public string City { get; set; }
-        public int PinCode { get; set; }
-        public Country Country { get; set; }
-        public State State { get; set; }
-        public Person Person { get; set; }
         public List<PersonAddress> GetPersonAddress()
         {
             DataTable dataTable = DataRepository.ExecuteDataTable("spGetPersonAddress");

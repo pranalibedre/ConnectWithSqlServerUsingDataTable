@@ -1,18 +1,17 @@
-﻿using System;
+﻿using Entities;
+using Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data;
-using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConnectWithSqlServerUsingDataTable
+namespace Repository
 {
-    public class State
+    public class StateRepository : IStateRepository
     {
-        public string StateName { get; set; }
-        public int StateId { get; set; }
-        public List<State> GetState()
+        public  List<State> GetState()
         {
             DataTable dataTable = DataRepository.ExecuteDataTable("spGetStates");
             var listStates = new List<State>();

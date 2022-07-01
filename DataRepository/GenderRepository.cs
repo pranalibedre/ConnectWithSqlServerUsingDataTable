@@ -1,19 +1,16 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Data;
+﻿using Entities;
+using Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConnectWithSqlServerUsingDataTable
+namespace Repository
 {
-    public class Gender
+    public class GenderRepository : IGenderRepository
     {
-        public string GenderName { get; set; }
-        public int GenderId { get; set; }
-        public Person Person { get; set; }
-
         public List<Gender> GetGenders()
         {
             DataTable dataTable = DataRepository.ExecuteDataTable("spGetGenders");

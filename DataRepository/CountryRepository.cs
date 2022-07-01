@@ -1,18 +1,18 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Data;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
+using Interfaces;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConnectWithSqlServerUsingDataTable
+namespace Repository
 {
-   public  class Country
+    public class CountryRepository : ICountryRepository
     {
-        public int CountryId { get; set; }
-        public string CountryName { get; set; }
         public List<Country> GetCountry()
         {
             DataTable dataTable = DataRepository.ExecuteDataTable("spGetCountries");
@@ -32,28 +32,24 @@ namespace ConnectWithSqlServerUsingDataTable
             }
             return listCountries;
         }
-        public static void AddCountry(int CountryId,string CountryName)
+
+        public void AddCountry(string Country)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString;
-            string insert = "SET IDENTITY_INSERT Country ON; Insert into Country(CountryId,Country) values(@CountryId,@Country); SET IDENTITY_INSERT Country OFF;";
+
             SqlConnection sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
-            SqlCommand sqlCommand = new SqlCommand(insert, sqlConnection);
-            sqlCommand.CommandType = CommandType.Text;
-            sqlCommand.Parameters.Add("@CountryId", SqlDbType.Int).Value = CountryId;
-            sqlCommand.Parameters.Add("@Country", SqlDbType.NVarChar).Value= CountryName;
+            SqlCommand sqlCommand = new SqlCommand("spAddCountry", sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            sqlCommand.Parameters.Add("@Country", SqlDbType.NVarChar).Value = Country;
             try
             {
                 sqlCommand.ExecuteNonQuery();
-                Console.WriteLine("Record Added Successfully!!");
+                Console.WriteLine("Added successfully");
             }
             catch (SqlException ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                sqlConnection.Close();
             }
         }
     }

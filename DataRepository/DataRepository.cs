@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data.SqlClient;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConnectWithSqlServerUsingDataTable
+namespace Repository
 {
-    class DataRepository
+    public class DataRepository
     {
         public static DataTable ExecuteDataTable(string stored_procedure, [Optional] params SqlParameter[] parameters)
         {
@@ -49,80 +49,3 @@ namespace ConnectWithSqlServerUsingDataTable
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//public static void Add<T>([Optional] T[] parameters)
-//{
-//    string connectionString = ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString;
-//    string insert = "";
-//    SqlConnection sqlConnection = new SqlConnection(connectionString);
-//    sqlConnection.Open();
-//    SqlCommand sqlCommand = new SqlCommand(insert, sqlConnection);
-//    sqlCommand.CommandType = CommandType.Text;
-//    try
-//    {
-//        sqlCommand.ExecuteNonQuery();
-//        Console.WriteLine("Record Added Successfully!!");
-//    }
-//    catch (SqlException ex)
-//    {
-//        Console.WriteLine(ex.Message);
-//    }
-//    finally
-//    {
-//        sqlConnection.Close();
-//    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//SqlConnection sqlConnection = new SqlConnection(connectionString);
-//sqlConnection.Open();
-//SqlCommand sqlCommand = new SqlCommand()
-//{
-//};
-//SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand);
-//DataTable dataTable = new DataTable();
-//adapter.SelectCommand = sqlCommand;
-//adapter.SelectCommand.Connection = sqlConnection;
-//adapter.Fill(dataTable);
-//sqlConnection.Close();
-//return dataTable;
-
-//dataTable.Columns.Add("NewColumn");
-
-//                    foreach (DataRow row in dataTable.Rows)
-//                    {
-//                        //need to set value to NewColumn column
-//                    }
