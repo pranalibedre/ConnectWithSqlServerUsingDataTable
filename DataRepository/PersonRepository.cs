@@ -55,6 +55,50 @@ namespace Repository
             Console.WriteLine();
             return person;
         }
+
+        public List<Person> GetPerson()
+        {
+            DataTable dataTable = DataRepository.ExecuteDataTable("spGetPersonDetails");
+            var listPerson = new List<Person>();
+            Console.WriteLine("Person Details");
+
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                Person person = new Person();
+                person.PersonId = Convert.ToInt16(dataTable.Rows[i]["PersonId"]);
+                person.FirstName = Convert.ToString(dataTable.Rows[i]["FirstName"]);
+                person.LastName = Convert.ToString(dataTable.Rows[i]["LastName"]);
+                person.Age = Convert.ToInt16(dataTable.Rows[i]["Age"]);
+                person.DateOfBirth = Convert.ToDateTime(dataTable.Rows[i]["DateOfBirth"]);
+                person.Email = Convert.ToString(dataTable.Rows[i]["Email"]);
+                person.TelephoneNo = Convert.ToInt64(dataTable.Rows[i]["TelephoneNo"]);
+                person.Gender = new Gender
+                {
+                    GenderName = Convert.ToString(dataTable.Rows[i]["Gender"])
+                };
+                person.PersonAddress = new PersonAddress
+                {
+                    AddressLine1 = Convert.ToString(dataTable.Rows[i]["AddressLine1"]),
+                    AddressLine2 = Convert.ToString(dataTable.Rows[i]["AddressLine2"]),
+                    City = Convert.ToString(dataTable.Rows[i]["City"]),
+                    PinCode = Convert.ToInt32(dataTable.Rows[i]["PinCode"])
+                };
+                person.Country = new Country
+                {
+                    CountryName = Convert.ToString(dataTable.Rows[i]["Country"])
+                };
+                listPerson.Add(person);
+            }
+            foreach (var list in listPerson)
+            {
+                Console.WriteLine($"{list.PersonId}\t{list.FirstName}\t{list.LastName}\t{list.Age}\t{list.Gender.GenderName}\t{list.DateOfBirth}\t{list.Email}\t{list.TelephoneNo}\t{list.PersonAddress.AddressLine1}\t{list.PersonAddress.AddressLine2}\t{list.PersonAddress.City}\t{list.Country.CountryName}\t{list.PersonAddress.PinCode}");
+            }
+            return listPerson;
+        }
+
+
+
         public void AddPerson(Person person)
         {
             //string connectionString = ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString;

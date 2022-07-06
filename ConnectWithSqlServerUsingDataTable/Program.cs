@@ -15,15 +15,16 @@ namespace ConnectWithSqlServerUsingDataTable
         {
             IPersonRepository personRepository = new PersonRepository();
             personRepository.GetPersonById(1);
+            personRepository.GetPerson();
 
-            IPersonAddressRepository personAddressRepository = new PersonAddressRepository();
-            personAddressRepository.GetPersonAddress();
+            //IPersonAddressRepository personAddressRepository = new PersonAddressRepository();
+            //personAddressRepository.GetPersonAddress();
 
-            IGenderRepository genderRepository = new GenderRepository();
-            genderRepository.GetGenders();
+            //IGenderRepository genderRepository = new GenderRepository();
+            //genderRepository.GetGenders();
 
-            ICountryRepository countryRepository = new CountryRepository();
-            countryRepository.AddCountry("");
+            //ICountryRepository countryRepository = new CountryRepository();
+            //countryRepository.AddCountry("");
 
 
             //Repository.PersonHelper personHelper = new PersonHelper();

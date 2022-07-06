@@ -10,6 +10,7 @@ namespace Interfaces
     public interface IPersonRepository
     {
         Person GetPersonById(int PersonId);
+        List<Person> GetPerson();
         void AddPerson(Person person);
         void UpdatePerson(Person person);
     }

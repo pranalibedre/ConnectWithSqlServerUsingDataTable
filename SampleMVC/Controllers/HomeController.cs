@@ -26,5 +26,14 @@ namespace SampleMVC.Controllers
 
             return View();
         }
+        public string person()
+        {
+            return "This is Index action method of Controller";
+        }
+        //public string Index(int id)
+        //{
+        //    return "This is Index action method of PersonController" + id;
+        //}
+
     }
 }
