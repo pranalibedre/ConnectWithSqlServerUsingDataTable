@@ -116,9 +116,9 @@
                 @Html.DisplayFor(m => item.PinCode)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { name = item.FirstName }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Delete", "Delete", new { name = item.FirstName }, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Update", "Update", new { name = item.FirstName }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Details", "Details", new { personId = item.PersonId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "Delete", new { personId = item.PersonId }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Update", "Update", new { personId = item.PersonId }, new { @class = "btn btn-success" })
             </td>
         </tr>
     }

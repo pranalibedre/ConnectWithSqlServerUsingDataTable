@@ -12,6 +12,7 @@ namespace SampleMVC.Models
 {
     public class PersonContext
     {
+        public int PersonId { get; set; }
 
         [Required(ErrorMessage = "Please enter your First Name")]
         [Display(Name = "First Name: ")]
