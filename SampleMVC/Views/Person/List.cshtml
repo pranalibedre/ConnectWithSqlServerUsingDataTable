@@ -1,0 +1,128 @@
+﻿@model IEnumerable<SampleMVC.Models.PersonContext>
+
+@{
+    ViewBag.Title = "List";
+}
+
+@Html.AntiForgeryToken()
+@{
+    ViewBag.Title = "Add";
+    if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success!</strong>@TempData["AlertMessage"]
+        </div>
+    }
+}
+@Html.AntiForgeryToken()
+@{
+    ViewBag.Title = "Update";
+    if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>Updated !</strong>@TempData["AlertMessage"]
+        </div>
+    }
+}
+
+<h4>
+    @Html.ActionLink("Add Person", "Add", null, new { @class = "btn btn-primary" })
+</h4>
+
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+
+        <th>
+            @Html.ActionLink("First Name", "Index")
+        </th>
+        <th>
+            @Html.ActionLink("Last Name", "Index", new { LastName = "" })
+        </th>
+        <th>
+            @Html.ActionLink("Gender", "Add")
+        </th>
+        <th>
+            @Html.ActionLink("Age", "Add")
+        </th>
+        <th>
+            @Html.ActionLink("Date of Birth", "Add")
+        </th>
+        <th>
+            @Html.ActionLink("Email", "Add")
+        </th>
+        <th>
+            @Html.ActionLink("Telephone No", "Add")
+        </th>
+        <th>
+            @Html.ActionLink("Country", "Add")
+        </th>
+        <th>
+            @Html.ActionLink("State", "Add")
+        </th>
+        <th>
+            @Html.ActionLink("AddressLine 1", "Add")
+        </th>
+        <th>
+            @Html.ActionLink("AddressLine 2", "Add")
+        </th>
+        <th>
+            @Html.ActionLink("City", "Add")
+        </th>
+        <th>
+            @Html.ActionLink("Pincode", "Add")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.TelephoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.SelectedCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.SelectedState)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.AddressLine1)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.AddressLine2)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.PinCode)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { name = item.FirstName }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "Delete", new { name = item.FirstName }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Update", "Update", new { name = item.FirstName }, new { @class = "btn btn-success" })
+            </td>
+        </tr>
+    }
+</table>
+
+
+
