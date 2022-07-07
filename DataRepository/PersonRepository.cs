@@ -88,11 +88,15 @@ namespace Repository
                 {
                     CountryName = Convert.ToString(dataTable.Rows[i]["Country"])
                 };
+                person.State = new State
+                {
+                    StateName = Convert.ToString(dataTable.Rows[i]["State"])
+                };
                 listPerson.Add(person);
             }
             foreach (var list in listPerson)
             {
-                Console.WriteLine($"{list.PersonId}\t{list.FirstName}\t{list.LastName}\t{list.Age}\t{list.Gender.GenderName}\t{list.DateOfBirth}\t{list.Email}\t{list.TelephoneNo}\t{list.PersonAddress.AddressLine1}\t{list.PersonAddress.AddressLine2}\t{list.PersonAddress.City}\t{list.Country.CountryName}\t{list.PersonAddress.PinCode}");
+                Console.WriteLine($"{list.PersonId}\t{list.FirstName}\t{list.LastName}\t{list.Age}\t{list.Gender.GenderName}\t{list.DateOfBirth}\t{list.Email}\t{list.TelephoneNo}\t{list.PersonAddress.AddressLine1}\t{list.PersonAddress.AddressLine2}\t{list.PersonAddress.City}\t{list.Country.CountryName}\t{list.PersonAddress.PinCode}\t{list.State.StateName}");
             }
             return listPerson;
         }

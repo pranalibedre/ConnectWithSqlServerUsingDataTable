@@ -12,9 +12,9 @@ namespace SampleMVC.Controllers
 {
     public class PersonController : Controller
     {
-  
-        public ActionResult Main()
-        { 
+
+        public ActionResult List()
+        {
             List<Person> getPersonDetails = new List<Person>();
             IPersonRepository personRepository = new PersonRepository();
             getPersonDetails = personRepository.GetPerson();
@@ -25,40 +25,28 @@ namespace SampleMVC.Controllers
                 var personContext = new PersonContext();
                 personContext.FirstName = person.FirstName;
                 personContext.LastName = person.LastName;
-                //personContext.Gender = new Gender
-                //{
-                //    GenderName = personContext.Gender
-                //};
+                personContext.Gender = person.Gender.GenderName;
                 personContext.Age = person.Age;
                 personContext.Email = person.Email;
                 personContext.DateOfBirth = Convert.ToDateTime(person.DateOfBirth);
                 personContext.TelephoneNo = person.TelephoneNo;
-                //personContext.PersonAddress = new PersonAddress
-                //{
-                //    AddressLine1 = personContext.AddressLine1,
-                //    AddressLine2 = personContext.AddressLine2,
-                //    City = personContext.City,
-                //    PinCode = personContext.PinCode
-                //};
-                //personContext.Country = new Country
-                //{
-                //    CountryName = personContext.SelectedCountry
-                //};
-                //personContext.State = new State
-                //{
-                //    StateName = personContext.SelectedState
-                //};
+                personContext.AddressLine1 = person.PersonAddress.AddressLine1;
+                personContext.AddressLine2 = person.PersonAddress.AddressLine2;
+                personContext.City = person.PersonAddress.City;
+                personContext.PinCode = person.PersonAddress.PinCode;
+                personContext.SelectedCountry = person.Country.CountryName;
+                personContext.SelectedState = person.State.StateName;
                 peopleContext.Add(personContext);
             }
             return View(peopleContext);
         }
 
-        public ActionResult Index()
+        public ActionResult Add()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Index(PersonContext personContext)
+        public ActionResult Add(PersonContext personContext)
         {
             Person person = new Person();
             person.FirstName = personContext.FirstName;
@@ -91,8 +79,95 @@ namespace SampleMVC.Controllers
             personRepository.AddPerson(person);
             TempData["AlertMessage"] = "Record Added Successfully";
 
-            return View();
+            return RedirectToAction("List", "Person");
         }
 
+        public ActionResult Update(PersonContext personContext)
+        {
+            Person person = new Person();
+            IPersonRepository personRepository = new PersonRepository();
+            personRepository.UpdatePerson(person);
+            personContext.FirstName = person.FirstName;
+            personContext.LastName = person.LastName;
+            personContext.Gender = person.Gender.GenderName;
+            personContext.Age = person.Age;
+            personContext.Email = person.Email;
+            personContext.DateOfBirth = Convert.ToDateTime(person.DateOfBirth);
+            personContext.TelephoneNo = person.TelephoneNo;
+            personContext.AddressLine1 = person.PersonAddress.AddressLine1;
+            personContext.AddressLine2 = person.PersonAddress.AddressLine2;
+            personContext.City = person.PersonAddress.City;
+            personContext.PinCode = person.PersonAddress.PinCode;
+            personContext.SelectedCountry = person.Country.CountryName;
+            personContext.SelectedState = person.State.StateName;
+
+           
+            TempData["AlertMessage"] = "Record Updated Successfully";
+
+            return RedirectToAction("List", "Person");
+        }
+
+        [HttpGet]
+        public ActionResult Update(string name)
+        { 
+            List<Person> getPersonDetails = new List<Person>();
+            IPersonRepository personRepository = new PersonRepository();
+            getPersonDetails = personRepository.GetPerson();
+            var result = getPersonDetails.First(x => x.FirstName == name);
+            return View(result);
+        }
+
+        public ActionResult Details(string name)
+        {
+            List<Person> getPersonDetails = new List<Person>();
+            IPersonRepository personRepository = new PersonRepository();
+            getPersonDetails = personRepository.GetPerson();
+            var result = getPersonDetails.First(x => x.FirstName == name);
+            return View(result);
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//public ActionResult Delete(string name)
+//{
+//    List<Person> getPersonDetails = new List<Person>();
+//    IPersonRepository personRepository = new PersonRepository();
+//    getPersonDetails = personRepository.GetPerson();
+//    var result = getPersonDetails.Where(x => x.FirstName == name).First();
+//    getPersonDetails.Remove(result);
+//    return View();
+
+//}

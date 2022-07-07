@@ -10,10 +10,11 @@ using System.Web.Mvc;
 
 namespace SampleMVC.Models
 {
-    public class PersonContext 
+    public class PersonContext
     {
-        [Required(ErrorMessage ="Please enter your First Name")]
-        [Display(Name ="First Name: ")]
+
+        [Required(ErrorMessage = "Please enter your First Name")]
+        [Display(Name = "First Name: ")]
         [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "First Name should contain only characters")]
         [StringLength(maximumLength: 10, MinimumLength = 2, ErrorMessage = "Last Name must be min 2 & max 10")]
         public string FirstName { get; set; }
@@ -30,7 +31,7 @@ namespace SampleMVC.Models
 
         [Required(ErrorMessage = "Please enter your age")]
         [Display(Name = "Age: ")]
-        [Range(18,100)]
+        [Range(18, 100)]
         public int Age { get; set; }
 
         [Required(ErrorMessage = "Please enter your Date of Birth")]
@@ -41,7 +42,7 @@ namespace SampleMVC.Models
 
         [Required(ErrorMessage = "Please enter your Email Id")]
         [Display(Name = "Email Id: ")]
-        [RegularExpression(@"^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$",ErrorMessage ="Enter Valid Email Id")]
+        [RegularExpression(@"^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$", ErrorMessage = "Enter Valid Email Id")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter your Telephone No")]

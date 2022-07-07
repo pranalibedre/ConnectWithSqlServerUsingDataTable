@@ -1,0 +1,118 @@
+﻿@model Entities.Person
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details of a Person</h2>
+
+<table>
+    <tr>
+        <th>
+            First Name 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.FirstName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Last Name 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.LastName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Gender 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.Gender)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Age 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.Age)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Date of Birth 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.DateOfBirth)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Telephone No 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.TelephoneNo)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Email Id 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.Email)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Address Line 1 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.PersonAddress.AddressLine1)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Address Line 2 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.PersonAddress.AddressLine2)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            City 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.PersonAddress.City)
+        </td>
+    </tr>
+    <tr>
+        <th>
+           Pincode 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.PersonAddress.PinCode)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Country 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.Country.CountryName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            State 
+        </th>
+        <td>
+            @Html.DisplayFor(x => x.State.StateName)
+        </td>
+    </tr>
+</table>
+
+<h4>
+    @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-primary" })
+</h4>

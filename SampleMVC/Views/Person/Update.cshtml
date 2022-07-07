@@ -1,0 +1,117 @@
+﻿@model  SampleMVC.Models.PersonContext
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update Person Details</h2>
+
+<table>
+    <tr>
+        <th>
+            First Name
+        </th>
+        <td>
+            @Html.EditorFor(x => x.FirstName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Last Name
+        </th>
+        <td>
+            @Html.EditorFor(x => x.LastName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Gender
+        </th>
+        <td>
+            @Html.EditorFor(x => x.Gender)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Age
+        </th>
+        <td>
+            @Html.EditorFor(x => x.Age)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Date of Birth
+        </th>
+        <td>
+            @Html.EditorFor(x => x.DateOfBirth)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Telephone No
+        </th>
+        <td>
+            @Html.EditorFor(x => x.TelephoneNo)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Email Id
+        </th>
+        <td>
+            @Html.EditorFor(x => x.Email)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Address Line 1
+        </th>
+        <td>
+            @Html.EditorFor(x => x.AddressLine1)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Address Line 2
+        </th>
+        <td>
+            @Html.EditorFor(x => x.AddressLine2)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            City
+        </th>
+        <td>
+            @Html.EditorFor(x => x.City)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Pincode
+        </th>
+        <td>
+            @Html.EditorFor(x => x.PinCode)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Country
+        </th>
+        <td>
+            @Html.EditorFor(x => x.SelectedCountry)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            State
+        </th>
+        <td>
+            @Html.EditorFor(x => x.SelectedState)
+        </td>
+    </tr>
+</table>
+
+<h4>
+    @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-primary" })
+</h4>
