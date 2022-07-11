@@ -9,7 +9,7 @@
 <h2>Person Details</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Add"))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
@@ -23,7 +23,7 @@
                 @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        @Html.HiddenFor(model => model.PersonId)
         <div class="form-group">
             @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
