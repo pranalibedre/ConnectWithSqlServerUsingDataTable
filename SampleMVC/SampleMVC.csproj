@@ -171,6 +171,7 @@
     <Content Include="Views\Person\Update.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Test\Person.cshtml" />
+    <Content Include="Views\Test\_GreetingMessgae.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
