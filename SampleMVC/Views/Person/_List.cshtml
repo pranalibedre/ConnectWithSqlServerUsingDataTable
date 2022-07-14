@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<SampleMVC.Models.PersonContext>
 
+@*@Styles.Render("~/Bundle/Styles")*@
+
+
 
 <table class="table table-bordered table-striped table-hover">
     <tr>
@@ -91,7 +94,7 @@
             <td>
                 @*@Html.ActionLink("Details", "Details", new { personId = item.PersonId }, new { @class = "btn btn-primary" })*@
                 @Html.ActionLink("Edit", "Add", "Person", new { personId = item.PersonId }, new { @class = "btn btn-success" })
-
+                @*@Html.ActionLink("Edit", "Add", "Person", new { personId = item.PersonId.ToString() }, new { @class = "btn btn-success" })*@
             </td>
         </tr>
     }

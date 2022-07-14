@@ -25,6 +25,11 @@ namespace SampleMVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Bundle/Styles").Include("~/Content/Styles/StyleSheet1.css", "~/Content/Styles/StyleSheet2.css"));
+            BundleTable.EnableOptimizations = false;
+
+            //bundles.Add(new StyleBundle("~/Bundle/Styles").IncludeDirectory("~/Content/Styles", "*.css"));
         }
     }
 }

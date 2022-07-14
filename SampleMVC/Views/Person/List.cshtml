@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "List";
 }
+<link href="~/Content/Styles/StyleSheet1.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/Styles/StyleSheet2.css" rel="stylesheet" type="text/css" />
+
 
 @Html.AntiForgeryToken()
 @{
@@ -27,8 +30,9 @@
 
 <h4>
     @Html.ActionLink("Add Person", "Add", "Person", null, new { @class = "btn btn-primary" })
+    @Html.TextBox("txt", "", new { @class = "background-red" })
 </h4>
 
- @Html.Partial("_List", Model)
+@Html.Partial("_List", Model)
 
 

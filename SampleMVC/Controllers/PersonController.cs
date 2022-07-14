@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Entities;
 using Interfaces;
 using Repository;
@@ -12,10 +13,9 @@ namespace SampleMVC.Controllers
 {
     public class PersonController : Controller
     {
-       
+       [CustomAuthorize]
         public ActionResult List()
         {
-
             List<Person> getPersonDetails = new List<Person>();
             IPersonRepository personRepository = new PersonRepository();
             getPersonDetails = personRepository.GetPerson();
@@ -66,7 +66,30 @@ namespace SampleMVC.Controllers
             }
             return View("Add",personContext);
         }
-    
+        //public ActionResult Add(string personId)
+        //{
+        //    var personContext = new PersonContext();
+        //    if (personId != null)
+        //    {
+        //        IPersonRepository personRepository = new PersonRepository();
+        //        var person = personRepository.GetPersonById(Convert.ToInt16(personId));
+        //        personContext.FirstName = person.FirstName;
+        //        personContext.LastName = person.LastName;
+        //        personContext.Gender = person.Gender.GenderName;
+        //        personContext.Age = person.Age;
+        //        personContext.Email = person.Email;
+        //        personContext.DateOfBirth = Convert.ToDateTime(person.DateOfBirth);
+        //        personContext.TelephoneNo = person.TelephoneNo;
+        //        personContext.AddressLine1 = person.PersonAddress.AddressLine1;
+        //        personContext.AddressLine2 = person.PersonAddress.AddressLine2;
+        //        personContext.City = person.PersonAddress.City;
+        //        personContext.PinCode = person.PersonAddress.PinCode;
+        //        personContext.SelectedCountry = person.Country.CountryName;
+        //        personContext.SelectedState = person.State.StateName;
+        //    }
+        //    return View("Add", personContext);
+        //}
+
         [HttpPost]
         public ActionResult Add(PersonContext personContext)
         {
@@ -114,31 +137,39 @@ namespace SampleMVC.Controllers
 
         }
 
+        public class CustomAuthorize : AuthorizeAttribute
+        {
+            protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+            {
+    
+            }
+        }
+
         public PartialViewResult _List()
         {
             return PartialView();
         }
 
-        public ActionResult Details(int personId)
-        {
-            IPersonRepository personRepository = new PersonRepository();
-            var person = personRepository.GetPersonById(personId);
-            var personContext = new PersonContext();
-            personContext.FirstName = person.FirstName;
-            personContext.LastName = person.LastName;
-            personContext.Gender = person.Gender.GenderName;
-            personContext.Age = person.Age;
-            personContext.Email = person.Email;
-            personContext.DateOfBirth = Convert.ToDateTime(person.DateOfBirth);
-            personContext.TelephoneNo = person.TelephoneNo;
-            personContext.AddressLine1 = person.PersonAddress.AddressLine1;
-            personContext.AddressLine2 = person.PersonAddress.AddressLine2;
-            personContext.City = person.PersonAddress.City;
-            personContext.PinCode = person.PersonAddress.PinCode;
-            personContext.SelectedCountry = person.Country.CountryName;
-            //personContext.SelectedState = person.State.StateName;
-            return View("Details", personContext);
-        }
+        //public ActionResult Details(int personId)
+        //{
+        //    IPersonRepository personRepository = new PersonRepository();
+        //    var person = personRepository.GetPersonById(personId);
+        //    var personContext = new PersonContext();
+        //    personContext.FirstName = person.FirstName;
+        //    personContext.LastName = person.LastName;
+        //    personContext.Gender = person.Gender.GenderName;
+        //    personContext.Age = person.Age;
+        //    personContext.Email = person.Email;
+        //    personContext.DateOfBirth = Convert.ToDateTime(person.DateOfBirth);
+        //    personContext.TelephoneNo = person.TelephoneNo;
+        //    personContext.AddressLine1 = person.PersonAddress.AddressLine1;
+        //    personContext.AddressLine2 = person.PersonAddress.AddressLine2;
+        //    personContext.City = person.PersonAddress.City;
+        //    personContext.PinCode = person.PersonAddress.PinCode;
+        //    personContext.SelectedCountry = person.Country.CountryName;
+        //    //personContext.SelectedState = person.State.StateName;
+        //    return View("Details", personContext);
+        //}
     }
 }
 
@@ -175,13 +206,3 @@ namespace SampleMVC.Controllers
 
 
 
-//public ActionResult Delete(string name)
-//{
-//    List<Person> getPersonDetails = new List<Person>();
-//    IPersonRepository personRepository = new PersonRepository();
-//    getPersonDetails = personRepository.GetPerson();
-//    var result = getPersonDetails.Where(x => x.FirstName == name).First();
-//    getPersonDetails.Remove(result);
-//    return View();
-
-//}
