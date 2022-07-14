@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PersonAddressRepository.cs" />
+    <Compile Include="PersonOracleReporstory.cs" />
     <Compile Include="PersonRepository.cs" />
     <Compile Include="StateRepository.cs" />
     <Compile Include="GenderRepository.cs" />
