@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMVC", "SampleMVC\SampleMVC.csproj", "{FA1D92D4-359A-4D96-9A14-CC89083548B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependacyResolver", "DependacyResolver\DependacyResolver.csproj", "{BF90A04D-183A-4CE2-8332-8325B5E837CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FA1D92D4-359A-4D96-9A14-CC89083548B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA1D92D4-359A-4D96-9A14-CC89083548B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA1D92D4-359A-4D96-9A14-CC89083548B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF90A04D-183A-4CE2-8332-8325B5E837CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF90A04D-183A-4CE2-8332-8325B5E837CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF90A04D-183A-4CE2-8332-8325B5E837CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF90A04D-183A-4CE2-8332-8325B5E837CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

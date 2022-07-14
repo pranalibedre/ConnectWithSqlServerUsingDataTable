@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DependacyResolver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,12 @@ namespace SampleMVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //register service and UI dependencies
+            var container = ServiceModule.RegisterComponents();
+
+            //resolve dependancies 
+            ServiceModule.SetDependancyResolver(container);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DataRepository;
 using System.Web.Routing;
 using Entities;
 using Interfaces;
@@ -13,12 +14,18 @@ namespace SampleMVC.Controllers
 {
     public class PersonController : Controller
     {
+        private IPersonRepository _personRepository;
+        public PersonController(IPersonRepository personRepository)
+        {
+            _personRepository = personRepository;
+        }
+
        [CustomAuthorize]
         public ActionResult List()
         {
             List<Person> getPersonDetails = new List<Person>();
-            IPersonRepository personRepository = new PersonRepository();
-            getPersonDetails = personRepository.GetPerson();
+            //IPersonRepository personRepository = new PersonOracleReporstory();
+            getPersonDetails = _personRepository.GetPerson();
 
             List<PersonContext> peopleContext = new List<PersonContext>();
             foreach (var person in getPersonDetails)
@@ -48,8 +55,8 @@ namespace SampleMVC.Controllers
             var personContext = new PersonContext();
             if (personId != null && personId > 0)
             {
-                IPersonRepository personRepository = new PersonRepository();
-                var person = personRepository.GetPersonById(personId.Value);
+                //IPersonRepository personRepository = new PersonOracleReporstory();
+                var person = _personRepository.GetPersonById(personId.Value);
                 personContext.FirstName = person.FirstName;
                 personContext.LastName = person.LastName;
                 personContext.Gender = person.Gender.GenderName;
