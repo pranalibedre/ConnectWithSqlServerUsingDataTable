@@ -1,4 +1,10 @@
-﻿@model IEnumerable<SampleMVC.Models.PersonContext>
+﻿
+@*@{
+    ViewBag.Title = "PersonView";
+}
+
+<h2>PersonView</h2>
+@model IEnumerable<SampleMVC.Models.PersonContext>
 
 @{
     ViewBag.Title = "List";
@@ -29,6 +35,7 @@
     @Html.ActionLink("Add Person", "Add", "Person", null, new { @class = "btn btn-primary" })
 </h4>
 
- @Html.Partial("_List", Model)
+@Html.Partial("_PersonList")*@
+
 
 

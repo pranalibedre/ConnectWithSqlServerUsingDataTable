@@ -54,7 +54,7 @@ namespace SampleMVC.Controllers
                 personContext.SelectedCountry = person.Country.CountryName;
                 personContext.SelectedState = person.State.StateName;
             }
-            return View("Person", personContext);
+            return View("Person",personContext);
         }
 
         [HttpPost]

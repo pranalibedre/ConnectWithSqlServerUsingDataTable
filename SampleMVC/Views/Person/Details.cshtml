@@ -1,4 +1,4 @@
-﻿@model Entities.Person
+﻿@model SampleMVC.Models.PersonContext
 
 @{
     ViewBag.Title = "Details";
@@ -68,7 +68,7 @@
             Address Line 1 
         </th>
         <td>
-            @Html.DisplayFor(x => x.PersonAddress.AddressLine1)
+            @Html.DisplayFor(x => x.AddressLine1)
         </td>
     </tr>
     <tr>
@@ -76,7 +76,7 @@
             Address Line 2 
         </th>
         <td>
-            @Html.DisplayFor(x => x.PersonAddress.AddressLine2)
+            @Html.DisplayFor(x => x.AddressLine2)
         </td>
     </tr>
     <tr>
@@ -84,7 +84,7 @@
             City 
         </th>
         <td>
-            @Html.DisplayFor(x => x.PersonAddress.City)
+            @Html.DisplayFor(x => x.City)
         </td>
     </tr>
     <tr>
@@ -92,7 +92,7 @@
            Pincode 
         </th>
         <td>
-            @Html.DisplayFor(x => x.PersonAddress.PinCode)
+            @Html.DisplayFor(x => x.PinCode)
         </td>
     </tr>
     <tr>
@@ -100,7 +100,7 @@
             Country 
         </th>
         <td>
-            @Html.DisplayFor(x => x.Country.CountryName)
+            @Html.DisplayFor(x => x.SelectedCountry)
         </td>
     </tr>
     <tr>
@@ -108,7 +108,7 @@
             State 
         </th>
         <td>
-            @Html.DisplayFor(x => x.State.StateName)
+            @Html.DisplayFor(x => x.SelectedState)
         </td>
     </tr>
 </table>

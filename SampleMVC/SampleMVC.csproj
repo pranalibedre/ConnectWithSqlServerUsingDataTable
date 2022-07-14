@@ -168,9 +168,11 @@
     <Content Include="Views\Person\Add.cshtml" />
     <Content Include="Views\Person\List.cshtml" />
     <Content Include="Views\Person\Details.cshtml" />
-    <Content Include="Views\Person\Update.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Test\Person.cshtml" />
+    <Content Include="Views\Person\_List.cshtml" />
+    <Content Include="Views\Person\PersonView.cshtml" />
+    <Content Include="Views\Person\_PersonList.cshtml" />
     <Content Include="Views\Test\_GreetingMessgae.cshtml" />
   </ItemGroup>
   <ItemGroup>

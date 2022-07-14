@@ -48,8 +48,11 @@ namespace Repository
                 {
                     CountryName = Convert.ToString(dataRow["Country"])
                 };
-
-                Console.WriteLine($"{person.PersonId}\t{person.FirstName}\t{person.LastName}\t{person.Age}\t{person.Gender.GenderName}\t{person.DateOfBirth}\t{person.Email}\t{person.TelephoneNo}\t{person.PersonAddress.AddressLine1}\t{person.PersonAddress.AddressLine2}\t{person.PersonAddress.City}\t{person.Country.CountryName}\t{person.PersonAddress.PinCode}");
+                person.State = new State
+                {
+                    StateName = Convert.ToString(dataRow["State"])
+                };
+                Console.WriteLine($"{person.PersonId}\t{person.FirstName}\t{person.LastName}\t{person.Age}\t{person.Gender.GenderName}\t{person.DateOfBirth}\t{person.Email}\t{person.TelephoneNo}\t{person.PersonAddress.AddressLine1}\t{person.PersonAddress.AddressLine2}\t{person.PersonAddress.City}\t{person.Country.CountryName}\t{person.PersonAddress.PinCode}\t{person.State.StateName}");
 
             }
             Console.WriteLine();
