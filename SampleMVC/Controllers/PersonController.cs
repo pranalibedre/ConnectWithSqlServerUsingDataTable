@@ -49,10 +49,10 @@ namespace SampleMVC.Controllers
             return View("List", peopleContext);
         }
 
-        public JsonResult AjaxList()
+        public ActionResult AjaxList()
         {
-
-            return Json(_personRepository.GetPerson().Take(5).ToList(), JsonRequestBehavior.AllowGet);
+            return PartialView("_List", _personRepository.GetPerson().Take(5).ToList());
+            //return Json(_personRepository.GetPerson().Take(5).ToList(), JsonRequestBehavior.AllowGet);
         }
         public ActionResult Add(int? personId)
         {

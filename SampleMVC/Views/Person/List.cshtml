@@ -31,9 +31,11 @@
 <h4>
     @Html.ActionLink("Add Person", "Add", "Person", null, new { @class = "btn btn-primary" })
     @Html.TextBox("txt", "", new { @class = "background-red" })
+    <a href="#" id="btnAjax">Ajax Load</a>
 </h4>
 
-
-@Html.Partial("_List", Model)
-
+<div class="perslon-list">
+    @Html.Partial("_List", Model)
+</div>
+<script src="~/Scripts/PersonList.js"></script>
 

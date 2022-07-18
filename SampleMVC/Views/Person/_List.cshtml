@@ -105,23 +105,5 @@
             </tr>
         }
 </table>
-<script>
-    $(document).ready(function () {
-        //GetData();
-        function GetData() {
-            var data = " ";
-            $.ajax({
-                url: "/Person/List",
-                type: "GET",
-                success: function (result) {
-                    result = JSON.parse(result);
-                    Console.log(result);
-                },
-                error: function (err) {
-                    Console.error(err);
-                }
-            });
-        }
-    });
-</script>
+
 
