@@ -153,3 +153,17 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+@*<script>
+    function BtnClick() {
+        $.ajax({
+            url: "/Person/Add",
+            method: "GET",
+            success: function (result) {
+                alert(result);
+            },
+            error: function (err) {
+                Console.error(err);
+            }
+        })
+    }
+</script>*@

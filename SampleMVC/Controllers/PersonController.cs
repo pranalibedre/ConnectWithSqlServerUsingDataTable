@@ -20,7 +20,6 @@ namespace SampleMVC.Controllers
             _personRepository = personRepository;
         }
 
-       [CustomAuthorize]
         public ActionResult List()
         {
             List<Person> getPersonDetails = new List<Person>();
@@ -47,9 +46,14 @@ namespace SampleMVC.Controllers
                 personContext.SelectedState = person.State.StateName;
                 peopleContext.Add(personContext);
             }
-            return View("List",peopleContext);
+            return View("List", peopleContext);
         }
-     
+
+        public JsonResult AjaxList()
+        {
+
+            return Json(_personRepository.GetPerson().Take(5).ToList(), JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Add(int? personId)
         {
             var personContext = new PersonContext();
@@ -71,31 +75,8 @@ namespace SampleMVC.Controllers
                 personContext.SelectedCountry = person.Country.CountryName;
                 personContext.SelectedState = person.State.StateName;
             }
-            return View("Add",personContext);
+            return View("Add", personContext);
         }
-        //public ActionResult Add(string personId)
-        //{
-        //    var personContext = new PersonContext();
-        //    if (personId != null)
-        //    {
-        //        IPersonRepository personRepository = new PersonRepository();
-        //        var person = personRepository.GetPersonById(Convert.ToInt16(personId));
-        //        personContext.FirstName = person.FirstName;
-        //        personContext.LastName = person.LastName;
-        //        personContext.Gender = person.Gender.GenderName;
-        //        personContext.Age = person.Age;
-        //        personContext.Email = person.Email;
-        //        personContext.DateOfBirth = Convert.ToDateTime(person.DateOfBirth);
-        //        personContext.TelephoneNo = person.TelephoneNo;
-        //        personContext.AddressLine1 = person.PersonAddress.AddressLine1;
-        //        personContext.AddressLine2 = person.PersonAddress.AddressLine2;
-        //        personContext.City = person.PersonAddress.City;
-        //        personContext.PinCode = person.PersonAddress.PinCode;
-        //        personContext.SelectedCountry = person.Country.CountryName;
-        //        personContext.SelectedState = person.State.StateName;
-        //    }
-        //    return View("Add", personContext);
-        //}
 
         [HttpPost]
         public ActionResult Add(PersonContext personContext)
@@ -127,15 +108,15 @@ namespace SampleMVC.Controllers
             {
                 StateName = personContext.SelectedState
             };
-            IPersonRepository personRepository = new PersonRepository();
+            //IPersonRepository personRepository = new PersonRepository();
 
             if (person.PersonId > 0)
             {
-                personRepository.UpdatePerson(person);
+                _personRepository.UpdatePerson(person);
             }
             else
             {
-                personRepository.AddPerson(person);
+                _personRepository.AddPerson(person);
             }
 
             TempData["AlertMessage"] = "Record Added Successfully";
@@ -148,7 +129,7 @@ namespace SampleMVC.Controllers
         {
             protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
             {
-    
+
             }
         }
 
@@ -157,26 +138,28 @@ namespace SampleMVC.Controllers
             return PartialView();
         }
 
-        //public ActionResult Details(int personId)
-        //{
-        //    IPersonRepository personRepository = new PersonRepository();
-        //    var person = personRepository.GetPersonById(personId);
-        //    var personContext = new PersonContext();
-        //    personContext.FirstName = person.FirstName;
-        //    personContext.LastName = person.LastName;
-        //    personContext.Gender = person.Gender.GenderName;
-        //    personContext.Age = person.Age;
-        //    personContext.Email = person.Email;
-        //    personContext.DateOfBirth = Convert.ToDateTime(person.DateOfBirth);
-        //    personContext.TelephoneNo = person.TelephoneNo;
-        //    personContext.AddressLine1 = person.PersonAddress.AddressLine1;
-        //    personContext.AddressLine2 = person.PersonAddress.AddressLine2;
-        //    personContext.City = person.PersonAddress.City;
-        //    personContext.PinCode = person.PersonAddress.PinCode;
-        //    personContext.SelectedCountry = person.Country.CountryName;
-        //    //personContext.SelectedState = person.State.StateName;
-        //    return View("Details", personContext);
-        //}
+        public JsonResult Details()
+        {
+            //IPersonRepository personRepository = new PersonRepository();
+            //var person = personRepository.GetPersonById(personId);
+            //var personContext = new PersonContext();
+            //personContext.FirstName = person.FirstName;
+            //personContext.LastName = person.LastName;
+            //personContext.Gender = person.Gender.GenderName;
+            //personContext.Age = person.Age;
+            //personContext.Email = person.Email;
+            //personContext.DateOfBirth = Convert.ToDateTime(person.DateOfBirth);
+            //personContext.TelephoneNo = person.TelephoneNo;
+            //personContext.AddressLine1 = person.PersonAddress.AddressLine1;
+            //personContext.AddressLine2 = person.PersonAddress.AddressLine2;
+            //personContext.City = person.PersonAddress.City;
+            //personContext.PinCode = person.PersonAddress.PinCode;
+            //personContext.SelectedCountry = person.Country.CountryName;
+            ////personContext.SelectedState = person.State.StateName;
+            //return View("Details", personContext);
+
+            return Json(_personRepository.GetPerson(), JsonRequestBehavior.AllowGet);
+        }
     }
 }
 
